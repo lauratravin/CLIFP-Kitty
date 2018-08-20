@@ -1,3 +1,3 @@
-module Kitty
+module CatBreeds
   VERSION = "0.1.0"
 end
