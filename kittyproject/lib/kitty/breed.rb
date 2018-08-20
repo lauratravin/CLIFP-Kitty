@@ -44,7 +44,7 @@ class CatBreeds::Breed
         }        
         puts ("")
     end     
-    def self.most_healthy  #breed with rating == 5 
+    def self.most_healthy  #breed with rating == 1 
         @@all.each {  |a|              
             if a.health_issues == 1
                 puts a.name
