@@ -7,7 +7,7 @@ class CatBreeds::Scraper
      attr_accessor :breeds, :webs, :reference, :charac, :name, :web
      URL = "http://www.vetstreet.com"   #Ask Technical coach if BP?
 
-     def get_page
+     def make_breeds
        html =  Nokogiri::HTML(open("http://www.vetstreet.com/cats/breeds"))      
        html.css("div.desktop-experience #hub-breed-list-container").children[3].css("a").each { |b|               
                 breed =  CatBreeds::Breed.new(b.text)             
@@ -91,9 +91,6 @@ class CatBreeds::Scraper
                                         }      
         end    
      end     
-     def make_breeds           
-           self.get_page                                          
-     end  
-
+    
 
 end    

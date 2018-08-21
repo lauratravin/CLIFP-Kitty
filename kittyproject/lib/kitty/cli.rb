@@ -107,7 +107,7 @@ class CatBreeds::CLI
           when 3
             CatBreeds::Scraper.make_profile
             CatBreeds::Breed.most_adap
-            binding.pry
+            
             puts ("Type b for go back to the menu")
             str = gets.chomp
             validate_input(str)
@@ -117,7 +117,7 @@ class CatBreeds::CLI
             
             CatBreeds::Scraper.make_profile
             CatBreeds::Breed.most_healthy
-            binding.pry
+       
             puts ("Type b for go back to the menu")
             str = gets.chomp
             validate_input(str)
@@ -143,7 +143,7 @@ class CatBreeds::CLI
                       puts "--------------------------------------------------------------------------------------------------" 
                        
             }
-             binding.pry
+            
             puts ("Type b for go back to the menu.")
             str = gets.chomp 
             validate_input(str)   
@@ -171,7 +171,7 @@ class CatBreeds::CLI
          i = input.to_i-1
          if CatBreeds::Breed.method_defined? :adaptability  #Exist at least one kitty breed in the collection? Method is dinamically created with first element
             if CatBreeds::Breed.all[i].adaptability != nil   #yes. Is the kitty I want in the class collection. Don't create.
-               binding.pry
+              
                return true
 
             else
