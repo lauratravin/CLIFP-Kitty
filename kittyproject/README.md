@@ -1,28 +1,31 @@
 # Kitty
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/kitty`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Ruby Gem provides a CLI to view the 50 Cat breeds information and their characteristics.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+<!--Add this line to your application's Gemfile:
 
 ```ruby
-gem 'kitty'
-```
+gem 'kittyproject'
+```-->
 
-And then execute:
+Secure way to run the program (the suggested by Flatiron didn't work, the restaurant also didnt run)
+
+Download the file from: https://github.com/lauratravin/CLIFP-Kitty
+Unzip and open in your computer. Run file bin/hellokity in your window or type ./bin/hellokitty in Kittyproject folder from command line.
+
+<!--And then execute:
 
     $ bundle
 
 Or install it yourself as:
 
-    $ gem install kitty
+    $ gem install kittyproject
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: Write usage instructions here-->
 
 ## Development
 
@@ -32,7 +35,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/kitty. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/lauratravin/CLIFP-Kitty. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

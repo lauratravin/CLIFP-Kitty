@@ -62,55 +62,65 @@ class CatBreeds::CLI
          until input.between?(1,5)   
                 puts("")   
                 puts "Bad Kitty!. Choose a correct option."
+                puts("")
+                puts("")
                 menu            
          end
 
          case input
          when 1
 
-             i = 0      
+             i = 0  
+             puts ("")
+             puts ("")    
              CatBreeds::Breed.all.each { |b|
                 i += 1
                 puts "#{i}. #{b.name}"             
              }
-             puts("Choose the number of breed you want to learn:")
-             puts("")
-             second_level_list(gets.chomp.to_i) 
+
+             choose_kitty_number
+             input = gets.chomp.to_i 
+             until input.between?(1,50)   
+                puts("")   
+                puts "Bad Kitty!. Choose a correct option."
+                puts("")
+                puts("")
+                input = gets.chomp.to_i         
+             end
+             second_level_list(input) 
+
 
           when 2   
 
             puts ("")
             puts ("Enter the first letter of the name") 
-            str = gets.chomp           
-            CatBreeds::Breed.search_breed_by_name(str) 
-            puts ("")
-            puts ("Choose the number of breed you want to learn:")
-            second_level_list(gets.chomp)
+            str = gets.chomp     
+            if CatBreeds::Breed.search_breed_by_name(str)               
+                  choose_kitty_number 
+                  second_level_list(gets.chomp.to_i)
+            else
+                puts "No kitty breed with that letter."
+                menu
+            end    
+           
             
           when 3
-
+            CatBreeds::Scraper.make_profile
             CatBreeds::Breed.most_adap
+            binding.pry
             puts ("Type b for go back to the menu")
             str = gets.chomp
-            until str == "b"  
-                puts("")   
-                puts "Bad Kitty!. Choose a correct option." 
-                puts ("Type \"b\" for go back to the menu")
-                str = gets.chomp         
-            end
+            validate_input(str)
             menu
 
           when 4
-
+            
+            CatBreeds::Scraper.make_profile
             CatBreeds::Breed.most_healthy
+            binding.pry
             puts ("Type b for go back to the menu")
             str = gets.chomp
-            until str == "b"  
-                puts("")   
-                puts "Bad Kitty!. Choose a correct option." 
-                puts ("Type \"b\" for go back to the menu")
-                str = gets.chomp        
-            end
+            validate_input(str)
             menu
 
           else
@@ -120,6 +130,8 @@ class CatBreeds::CLI
      end    
      def second_level_list(input)  
               
+            kitty_charac_exist?(input)  #generate the kitty profile if it doesn't exits
+
             i = input.to_i-1
             puts "Breed name: #{CatBreeds::Breed.all[i].name}"
             puts "Characteristics:"
@@ -131,19 +143,43 @@ class CatBreeds::CLI
                       puts "--------------------------------------------------------------------------------------------------" 
                        
             }
-           puts ("Type \"b\" for go back to the menu.")
-           str = gets.chomp 
-              
+             binding.pry
+            puts ("Type b for go back to the menu.")
+            str = gets.chomp 
+            validate_input(str)   
+            menu  
+     end    
+     # CLI messages. Refactoring repeat code.
+     def choose_kitty_number
 
-           until str == "b"  || str == "m"
+            puts("")
+            puts("Choose the number of breed you want to learn:")
+            puts("")
+
+     end   
+     def validate_input(str)  
+           
+            until str == "b"  
                 puts("")   
                 puts "Bad Kitty!. Choose a correct option." 
-                puts ("Type b for go back to the main menu")
-                str = gets.chomp        
+                puts ("Type b for go back to the menu")
+                str = gets.chomp         
             end
-            
-           menu  
-     end     
 
+     end
+     def kitty_charac_exist?(input)   #enter an especific kitty Breed number
+         i = input.to_i-1
+         if CatBreeds::Breed.method_defined? :adaptability  #Exist at least one kitty breed in the collection? Method is dinamically created with first element
+            if CatBreeds::Breed.all[i].adaptability != nil   #yes. Is the kitty I want in the class collection. Don't create.
+               binding.pry
+               return true
+
+            else
+             CatBreeds::Scraper.make_profile(CatBreeds::Breed.all[i])   #Characteristics are not empty for some kitty breed but yes for this one.
+            end
+         else
+             CatBreeds::Scraper.make_profile(CatBreeds::Breed.all[i])     #Characteristic is empty for all kitties, create only this kitty breed characteristic.
+         end        
+     end    
 
 end

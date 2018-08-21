@@ -25,16 +25,17 @@ class CatBreeds::Breed
     end 
     def self.reference
         @@reference
-    end 
-    def self.find_breed
-
-    end    
-    def self.search_breed_by_name(str)  #A or a    
+    end   
+    def self.search_breed_by_name(str)  #A or a  
+        var = false
         self.all.select.with_index { |b,index|     
             if b.name[0].downcase == str.strip  #dont use function match, doesnt work very well.
                 puts "#{index+1}. #{b.name}"
-            end            
-        }               
+                var = true              
+            end                   
+        } 
+        return var     
+         
     end  
     def self.most_adap  #breed with rating == 5 
         @@all.each {  |a|              
