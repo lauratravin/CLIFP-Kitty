@@ -1,5 +1,3 @@
-require 'pry'
-
 class CatBreeds::Breed
         @@all= [ ]
         @@reference= [ ]
@@ -30,7 +28,7 @@ class CatBreeds::Breed
         var = false
         self.all.select.with_index { |b,index|     
             if b.name[0].downcase == str.strip  #dont use function match, doesnt work very well.
-                puts "#{index+1}. #{b.name}"
+                puts "   #{index+1}. #{b.name}"
                 var = true              
             end                   
         } 
@@ -40,15 +38,15 @@ class CatBreeds::Breed
     def self.most_adap  #breed with rating == 5 
         @@all.each {  |a|              
             if a.adaptability == 5
-                puts a.name
+                puts "   {#a.name}"
             end                  
         }        
-        puts ("")
+        puts ""
     end     
     def self.most_healthy  #breed with rating == 1 
         @@all.each {  |a|              
             if a.health_issues == 1
-                puts a.name
+                puts "   {#a.name}"
             end    
         }
     end

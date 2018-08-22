@@ -4,7 +4,6 @@ class CatBreeds::CLI
 
      def call  
         header       
-        puts "Kitten list is coming:"
         call_websites
         menu
         
@@ -51,19 +50,19 @@ class CatBreeds::CLI
      end
      
      def menu 
-         puts "Select a number option"
-         puts "1. Check kitties Breeds"
-         puts "2. Search a breed by name."
-         puts "3. List of most adaptable breeds"
-         puts "4. List of most healthy breeds"
-         puts "5. Say goodbye kittens.(Exit)"
+         puts "   Select a number option"
+         puts "   1. Check kitties Breeds"
+         puts "   2. Search a breed by name."
+         puts "   3. List of most adaptable breeds"
+         puts "   4. List of most healthy breeds"
+         puts "   5. Say goodbye kittens.(Exit)"
          input = gets.strip.to_i
           
          until input.between?(1,5)   
-                puts("")   
-                puts "Bad Kitty!. Choose a correct option."
-                puts("")
-                puts("")
+                puts ""  
+                puts "   Bad Kitty!. Choose a correct option."
+                puts ""
+                puts ""
                 menu            
          end
 
@@ -71,8 +70,8 @@ class CatBreeds::CLI
          when 1
 
              i = 0  
-             puts ("")
-             puts ("")    
+             puts ""
+             puts ""    
              CatBreeds::Breed.all.each { |b|
                 i += 1
                 puts "#{i}. #{b.name}"             
@@ -81,10 +80,10 @@ class CatBreeds::CLI
              choose_kitty_number
              input = gets.chomp.to_i 
              until input.between?(1,50)   
-                puts("")   
-                puts "Bad Kitty!. Choose a correct option."
-                puts("")
-                puts("")
+                puts ""   
+                puts "   Bad Kitty!. Choose a correct option."
+                puts ""
+                puts ""
                 input = gets.chomp.to_i         
              end
              second_level_list(input) 
@@ -92,14 +91,14 @@ class CatBreeds::CLI
 
           when 2   
 
-            puts ("")
-            puts ("Enter the first letter of the name") 
+            puts ""
+            puts "   Enter the first letter of the name"
             str = gets.chomp     
             if CatBreeds::Breed.search_breed_by_name(str)               
                   choose_kitty_number 
                   second_level_list(gets.chomp.to_i)
             else
-                puts "No kitty breed with that letter."
+                puts "   No kitty breed with that letter."
                 menu
             end    
            
@@ -108,7 +107,7 @@ class CatBreeds::CLI
             CatBreeds::Scraper.make_profile
             CatBreeds::Breed.most_adap
             
-            puts ("Type b for go back to the menu")
+            puts "   Type b for go back to the menu"
             str = gets.chomp
             validate_input(str)
             menu
@@ -118,7 +117,7 @@ class CatBreeds::CLI
             CatBreeds::Scraper.make_profile
             CatBreeds::Breed.most_healthy
        
-            puts ("Type b for go back to the menu")
+            puts "   Type b for go back to the menu"
             str = gets.chomp
             validate_input(str)
             menu
@@ -133,18 +132,18 @@ class CatBreeds::CLI
             kitty_charac_exist?(input)  #generate the kitty profile if it doesn't exits
 
             i = input.to_i-1
-            puts "Breed name: #{CatBreeds::Breed.all[i].name}"
-            puts "Characteristics:"
+            puts "   Breed name: #{CatBreeds::Breed.all[i].name}"
+            puts "   Characteristics:"
             CatBreeds::Breed::reference.each { |r0,r1|  
                       puts "--------------------------------------------------------------------------------------------------"         
-                      puts "#{r0}:"
-                      puts "#{r1}"
-                      puts "Rating: #{CatBreeds::Breed.all[i].send(r0.downcase.tr(" ","_"))}"    
+                      puts "   #{r0}:"
+                      puts "   #{r1}"
+                      puts "   Rating: #{CatBreeds::Breed.all[i].send(r0.downcase.tr(" ","_"))}"    
                       puts "--------------------------------------------------------------------------------------------------" 
                        
             }
             
-            puts ("Type b for go back to the menu.")
+            puts ("   Type b for go back to the menu.")
             str = gets.chomp 
             validate_input(str)   
             menu  
@@ -152,17 +151,17 @@ class CatBreeds::CLI
      # CLI messages. Refactoring repeat code.
      def choose_kitty_number
 
-            puts("")
-            puts("Choose the number of breed you want to learn:")
-            puts("")
+            puts ""
+            puts "   Choose the number of breed you want to learn:"
+            puts ""
 
      end   
      def validate_input(str)  
            
             until str == "b"  
                 puts("")   
-                puts "Bad Kitty!. Choose a correct option." 
-                puts ("Type b for go back to the menu")
+                puts "   Bad Kitty!. Choose a correct option." 
+                puts "   Type b for go back to the menu"
                 str = gets.chomp         
             end
 

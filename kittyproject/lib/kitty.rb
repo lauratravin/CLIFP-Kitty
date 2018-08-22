@@ -1,3 +1,6 @@
+require 'pry'
+require 'nokogiri'
+require 'open-uri' 
 require_relative "./kitty/version"
 require_relative "./kitty/cli"
 require_relative "./kitty/scraper"

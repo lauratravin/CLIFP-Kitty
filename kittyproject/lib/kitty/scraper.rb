@@ -1,7 +1,5 @@
-require 'pry'
-require 'nokogiri'
-require 'open-uri' 
-require 'launchy'
+
+
 
 class CatBreeds::Scraper
      attr_accessor :breeds, :webs, :reference, :charac, :name, :web
