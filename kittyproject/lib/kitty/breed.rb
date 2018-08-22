@@ -38,7 +38,7 @@ class CatBreeds::Breed
     def self.most_adap  #breed with rating == 5 
         @@all.each {  |a|              
             if a.adaptability == 5
-                puts "   {#a.name}"
+                puts "   #{a.name}"
             end                  
         }        
         puts ""
@@ -46,7 +46,7 @@ class CatBreeds::Breed
     def self.most_healthy  #breed with rating == 1 
         @@all.each {  |a|              
             if a.health_issues == 1
-                puts "   {#a.name}"
+                puts "   #{a.name}"
             end    
         }
     end

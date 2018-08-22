@@ -98,7 +98,8 @@ class CatBreeds::CLI
                   choose_kitty_number 
                   second_level_list(gets.chomp.to_i)
             else
-                puts "   No kitty breed with that letter."
+                puts ""
+                puts "   Sorry, no kitty breed with that letter."
                 menu
             end    
            
@@ -135,11 +136,11 @@ class CatBreeds::CLI
             puts "   Breed name: #{CatBreeds::Breed.all[i].name}"
             puts "   Characteristics:"
             CatBreeds::Breed::reference.each { |r0,r1|  
-                      puts "--------------------------------------------------------------------------------------------------"         
+                      puts "----------------------------------------------------------------------------------------------------------------"         
                       puts "   #{r0}:"
                       puts "   #{r1}"
                       puts "   Rating: #{CatBreeds::Breed.all[i].send(r0.downcase.tr(" ","_"))}"    
-                      puts "--------------------------------------------------------------------------------------------------" 
+                      puts "----------------------------------------------------------------------------------------------------------------" 
                        
             }
             
