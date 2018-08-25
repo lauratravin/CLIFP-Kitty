@@ -45,8 +45,8 @@ class CatBreeds::CLI
 
      def call_websites
          scraper = CatBreeds::Scraper.new    
-         scraper.make_breeds  #must be execute one time each time user execurte the program, reads 51 webpages.
-         return scraper
+         scraper.make_breeds  #generate list of breeds, can be also call through a class method. 
+        
      end
      
      def menu 

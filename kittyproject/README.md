@@ -10,10 +10,11 @@ This Ruby Gem provides a CLI to view the 50 Cat breeds information and their cha
 gem 'kittyproject'
 ```-->
 
-Secure way to run the program (the suggested by Flatiron didn't work, the restaurant also didnt run)
 
 Download the file from: https://github.com/lauratravin/CLIFP-Kitty
-Unzip and open in your computer. Run file bin/hellokity in your window or type ./bin/hellokitty in Kittyproject folder from command line.
+Unzip and open in your computer. Run file kittyproject/bin/hellokity in your window or type 
+.kittyproject/bin/hellokitty inside Cliftp-kitty folder from command line.
+This program is not a publish gem file.
 
 <!--And then execute:
 
