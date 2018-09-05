@@ -50,6 +50,7 @@ class CatBreeds::CLI
      end
      
      def menu 
+         puts ""
          puts "   Select a number option"
          puts "   1. Check kitties Breeds"
          puts "   2. Search a breed by name."
@@ -72,10 +73,10 @@ class CatBreeds::CLI
              i = 0  
              puts ""
              puts ""    
-             CatBreeds::Breed.all.each { |b|
+             CatBreeds::Breed.all.each do |b|
                 i += 1
                 puts "#{i}. #{b.name}"             
-             }
+             end
 
              choose_kitty_number
              input = gets.chomp.to_i 
@@ -90,7 +91,7 @@ class CatBreeds::CLI
 
 
           when 2   
-
+    
             puts ""
             puts "   Enter the first letter of the name"
             str = gets.chomp     
@@ -100,17 +101,14 @@ class CatBreeds::CLI
             else
                 puts ""
                 puts "   Sorry, no kitty breed with that letter."
+                puts ""
                 menu
             end    
            
             
           when 3
             CatBreeds::Scraper.make_profile
-            CatBreeds::Breed.most_adap
-            
-            puts "   Type b for go back to the menu"
-            str = gets.chomp
-            validate_input(str)
+            CatBreeds::Breed.most_adap           
             menu
 
           when 4
@@ -118,15 +116,16 @@ class CatBreeds::CLI
             CatBreeds::Scraper.make_profile
             CatBreeds::Breed.most_healthy
        
-            puts "   Type b for go back to the menu"
-            str = gets.chomp
-            validate_input(str)
+            # puts "   Type b for go back to the menu"
+            # str = gets.chomp
+            # validate_input(str)
             menu
 
           else
 
             exit            
           end
+          
      end    
      def second_level_list(input)  
               
@@ -135,7 +134,7 @@ class CatBreeds::CLI
             i = input.to_i-1
             puts "   Breed name: #{CatBreeds::Breed.all[i].name}"
             puts "   Characteristics:"
-            CatBreeds::Breed::reference.each { |r0,r1|  
+            CatBreeds::Breed.reference.each { |r0,r1|  
                       puts "----------------------------------------------------------------------------------------------------------------"         
                       puts "   #{r0}:"
                       puts "   #{r1}"
@@ -144,9 +143,9 @@ class CatBreeds::CLI
                        
             }
             
-            puts ("   Type b for go back to the menu.")
-            str = gets.chomp 
-            validate_input(str)   
+            # puts ("   Type b for go back to the menu.")
+            # str = gets.chomp 
+            # validate_input(str)   
             menu  
      end    
      # CLI messages. Refactoring repeat code.
